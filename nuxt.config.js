@@ -1,3 +1,5 @@
+import serverMiddleware from "./serverMiddleware";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -17,14 +19,14 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios',
     '~/plugins/repositories',
-    { src: './plugins/vue-concise-slider.js', mode: 'client' }
+    { src: '~/plugins/vue-concise-slider.js', ssr:false },
+    { src: '~/plugins/v-tooltip.js', ssr:false },
+    {src:'~/plugins/alert', ssr:false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,4 +52,17 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   css: ['~/assets/css/index.css'],
+  serverMiddleware : [
+    '~/serverMiddleware'
+  ],
+  router: {
+    // middleware:['redirectToHome'],
+    extendRouter(routes,resole){
+      routes.push({
+        name:'/home',
+        path:'/home',
+        component:resole(__dirname,'pages/index.vue')
+      })
+    }
+  },
 }

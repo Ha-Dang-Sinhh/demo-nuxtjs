@@ -31,5 +31,8 @@ export default {
   //   }
   // },
   // fetchOnServer:false
+  mounted() {
+    this.$alert('what the f*ck');
+  }
 }
 </script>
