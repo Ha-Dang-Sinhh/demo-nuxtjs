@@ -34,3 +34,12 @@
     transform: rotate(360deg);
   }
 }
+.carousel-wrapper {
+  padding: 40px;
+  width: 70vh;
+  height: 180px;
+}
+.img-warpper img {
+  margin: auto;
+  background-image: linear-gradient(gray 100%, transparent 0);
+}
